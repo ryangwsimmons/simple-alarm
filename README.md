@@ -1,9 +1,9 @@
 # Simple Alarm
-<center>
+<p align="center">
 
 ![Example Screenshot](res/example-screenshot-1.png) 
 
-</center>
+</p>
 A simple alarm application written in Python with a GUI using GTK+ 3.
 
 ## Dependencies
