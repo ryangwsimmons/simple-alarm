@@ -65,8 +65,3 @@ class AlarmGui(Gtk.Window):
 
         self.main_box.pack_start(self.set_button, True, False, 0)
         self.main_box.pack_start(self.time_remaining_bar, True, True, 0)
-
-gui = AlarmGui()
-gui.connect("destroy", Gtk.main_quit)
-gui.show_all()
-Gtk.main()
