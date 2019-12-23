@@ -1,7 +1,7 @@
 # Simple Alarm
 <p align="center">
 
-<img src="res/example-screenshot-1.png">
+<img src="images/example-screenshot-1.png">
 
 </p>
 A simple alarm application written in Python with a GUI using GTK+ 3.
