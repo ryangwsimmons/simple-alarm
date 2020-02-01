@@ -1,3 +1,4 @@
+import controller
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -6,6 +7,9 @@ class AlarmGui(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="Alarm", default_width=200, default_height=100, resizable=False)
+
+        # Define the controller for the application
+        self.control = controller.AlarmController(self)
 
         # Define the main box for the application
         self.main_box = Gtk.Box(border_width=5, spacing=2, orientation=Gtk.Orientation.VERTICAL)
@@ -45,6 +49,7 @@ class AlarmGui(Gtk.Window):
 
         # Define the button to set the alarm
         self.set_button = Gtk.Button(label="Set Alarm")
+        self.set_button.connect("clicked", self.control.set_alarm)
 
         # Define the status bar to display the time until the alarm goes off
         self.time_remaining_bar = Gtk.Statusbar.new()

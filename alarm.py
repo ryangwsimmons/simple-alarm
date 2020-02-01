@@ -2,29 +2,29 @@ from datetime import time
 
 class Alarm:
 
-    def __init__(self, time):
-        self.time = time
+    def __init__(self, time = None):
+        self._time = time
     
     @property
     def time(self):
-        return self.time
+        return self._time
     
     @time.setter
     def time(self, time):
-        self.time = time
+        self._time = time
 
     @property
     def hour(self):
-        return self.time.hour
+        return self._time.hour
     
     @hour.setter
     def hour(self, hour):
-        self.time.hour = hour
+        self._time.hour = hour
     
     @property
     def minute(self):
-        return self.time.minute
+        return self._time.minute
     
     @minute.setter
     def minute(self, minute):
-        self.time.minute = minute
+        self._time.minute = minute
