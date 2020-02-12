@@ -16,4 +16,4 @@ A simple alarm application written in Python with a GUI using GTK+ 3. For some r
 To run the application, simply download/clone the repository, and execute `python3 start.py`. Assuming the required dependencies are installed, the application should start.
 
 ### Sidenote: Running on Windows
-I haven't really designed this application with Windows in mind, as there are much more capable applications available on that platform, however in theory it should work. However, to start the application in Windows, you will need to follow the instructions provided at [Getting Started -- PyGObject](https://pygobject.readthedocs.io/en/latest/getting_started.html#windows-getting-started)
+I haven't really designed this application with Windows in mind, as there are much more capable applications available on that platform, however in theory it should work. However, to start the application in Windows, you will need to follow the instructions provided at [Getting Started -- PyGObject](https://pygobject.readthedocs.io/en/latest/getting_started.html#windows-getting-started).
