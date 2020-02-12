@@ -1,8 +1,7 @@
 from alarm import Alarm
 from datetime import datetime, time
-import sys
-from time import time, sleep
-import typing
+from playsound import playsound
+from time import sleep
 
 class AlarmClock:
 
@@ -12,6 +11,8 @@ class AlarmClock:
             self._alarm = Alarm()
         else:
             self._alarm = alarm
+        
+        self._ringing = False
     
     @property
     def alarm(self):
@@ -22,18 +23,12 @@ class AlarmClock:
         # Set an alarm on the alarm clock
         self._alarm = alarm
     
-    def check_time(self):
-        if datetime.now() < self._alarm._time:
-            return False
-        else:
-            return True
-    
-    def monitor(self):
-        # Wait until the alarm time is the current time
-        while self.check_time() == False:
-            pass
-        else:
-            return
+    def wait_for_time(self):
+        #Calculate the difference between the current time and the alarm time
+        time_difference = self._alarm._time - datetime.now()
+
+        #Sleep for the difference between the two times
+        sleep(time_difference.total_seconds())
     
     @property
     def ringing(self):
@@ -49,10 +44,5 @@ class AlarmClock:
 
         # While the attribute is true, play the alarm
         while self._ringing == True:
-            sys.stdout.write("\a")
-            sleep(0.5)
-            sys.stdout.write("\a")
-            sleep(0.5)
-            sys.stdout.write("\a")
-
+            playsound("alarm.wav")
             sleep(2)

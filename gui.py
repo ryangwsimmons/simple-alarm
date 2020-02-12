@@ -6,7 +6,7 @@ from gi.repository import Gtk
 class AlarmGui(Gtk.Window):
 
     def __init__(self):
-        Gtk.Window.__init__(self, title="Alarm", default_width=200, default_height=100, resizable=False)
+        Gtk.Window.__init__(self, title="Alarm", default_width=350, default_height=100, resizable=False)
 
         # Define the controller for the application
         self.control = controller.AlarmController(self)

@@ -10,3 +10,4 @@ A simple alarm application written in Python with a GUI using GTK+ 3. For some r
 - Python 3
 - GTK+ 3.0 or higher
 - gobject-introspection
+- playsound
