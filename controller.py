@@ -18,6 +18,11 @@ class AlarmController:
         self.clock = AlarmClock()
     
     def set_alarm(self, button):
+        # Disable the hour and minute setters, the set button
+        self.gui.hours_setter.set_sensitive(False)
+        self.gui.minutes_setter.set_sensitive(False)
+        self.gui.set_button.set_sensitive(False)
+
         # Get the hour and minutes from the GUI
         hours = self.gui.hours_setter.get_value_as_int()
         minutes = self.gui.minutes_setter.get_value_as_int()
@@ -48,8 +53,8 @@ class AlarmController:
             # Push the time remaining to the status bar, after removing any previous messages
             self.gui.time_remaining_bar.remove_all(0)
             self.gui.time_remaining_bar.push(0, "Time Remaining: " + str(hours) + (" hour, " if hours < 2 and hours > 0 else " hours, ") \
-                                                                   + str(minutes) + (" minute, " if minutes < 2 and minutes > 0 else " minutes, ") \
-                                                                   + str(seconds) + (" second" if seconds < 2 and seconds > 0 else " seconds"))
+                                                                + str(minutes) + (" minute, " if minutes < 2 and minutes > 0 else " minutes, ") \
+                                                                + str(seconds) + (" second" if seconds < 2 and seconds > 0 else " seconds"))
             
             # Calculate the new time remaining
             time_difference = timedelta(seconds=(time_difference.seconds - 1))
@@ -73,7 +78,15 @@ class AlarmController:
         GLib.idle_add(self.open_ring_dialog)
     
     def open_ring_dialog(self):
+        # Open the ringing dialog
         ringing_dialog = Gtk.MessageDialog(self.gui, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Alarm is ringing! Press OK to dismiss.")
         ringing_dialog.run()
         ringing_dialog.destroy()
+
+        # Stop the ringing
         self.clock.ringing = False
+
+        # Re-enable UI elements
+        self.gui.hours_setter.set_sensitive(True)
+        self.gui.minutes_setter.set_sensitive(True)
+        self.gui.set_button.set_sensitive(True)

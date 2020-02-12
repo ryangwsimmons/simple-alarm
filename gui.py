@@ -31,6 +31,7 @@ class AlarmGui(Gtk.Window):
         self.hours_setter = Gtk.SpinButton(value=0, orientation=Gtk.Orientation.VERTICAL, 
             adjustment=Gtk.Adjustment(value=0, lower=0, upper=24, step_increment=1))
         self.hours_setter.set_range(0, 23)
+        self.hours_setter.set_property("tooltip-text", "Set the hour the alarm will ring at (24hr time)")
 
         # Define the label for the hours setter
         self.hours_label = Gtk.Label(label="Hour")
@@ -43,6 +44,7 @@ class AlarmGui(Gtk.Window):
             spinbutton.props.text = "%02d" % spinbutton.props.value
             return True
         self.minutes_setter.connect('output', output_two_digits)
+        self.minutes_setter.set_property("tooltip-text", "Set the minute the alarm will ring at")
 
         # Define the label for the minutes setter
         self.minutes_label = Gtk.Label(label="Minute")
@@ -68,5 +70,5 @@ class AlarmGui(Gtk.Window):
         self.minutes_box.pack_start(self.minutes_setter, True, True, 0)
         self.minutes_box.pack_start(self.minutes_label, True, True, 0)
 
-        self.main_box.pack_start(self.set_button, True, False, 0)
         self.main_box.pack_start(self.time_remaining_bar, True, True, 0)
+        self.main_box.pack_start(self.set_button, True, False, 0)
