@@ -30,9 +30,9 @@ class AlarmController:
         # Create a new time object with the hour and minute values
         # If the alarm time is less than the current time, set the alarm for tomorrow, else set it for today
         if hours < datetime.now().hour or (minutes <= datetime.now().minute and hours <= datetime.now().hour):
-            self.clock._alarm._time = datetime.now().replace(day=(datetime.now().day + 1), hour=hours, minute=minutes)
+            self.clock._alarm._time = datetime.now().replace(day=(datetime.now().day + 1), hour=hours, minute=minutes, second=0, microsecond=0)
         else:
-            self.clock._alarm._time = datetime.now().replace(hour=hours, minute=minutes)
+            self.clock._alarm._time = datetime.now().replace(hour=hours, minute=minutes, second=0, microsecond=0)
 
         # Start the monitor for the alarm, then open the alarm dialog
         monitor_thread = Thread(target=self.start_alarm)
@@ -52,7 +52,7 @@ class AlarmController:
 
             # Push the time remaining to the status bar, after removing any previous messages
             self.gui.time_remaining_bar.remove_all(0)
-            self.gui.time_remaining_bar.push(0, "Time Remaining: " + str(hours) + (" hour, " if hours < 2 and hours > 0 else " hours, ") \
+            self.gui.time_remaining_bar.push(0, "Time Until Alarm: " + str(hours) + (" hour, " if hours < 2 and hours > 0 else " hours, ") \
                                                                 + str(minutes) + (" minute, " if minutes < 2 and minutes > 0 else " minutes, ") \
                                                                 + str(seconds) + (" second" if seconds < 2 and seconds > 0 else " seconds"))
             
